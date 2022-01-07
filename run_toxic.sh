@@ -3,13 +3,13 @@
 export TOXIC_DIR=/toxic/language/data
 export TASK_NAME=Toxic
 
-export DATA=$1
-export RAN=$2
-export MODEL_DIR=$3
+export DATA=/media/lvzhiheng02/Windows-SSD/Users/cogito/data/civilComment
+export RAN=42
+export MODEL_DIR=./output_dir
 
-python run_toxic.py \
-  --model_type roberta \
-  --model_name_or_path roberta-large \
+python3 run_toxic.py \
+  --model_type bert \
+  --model_name_or_path bert-base-uncased\
   --task_name $TASK_NAME \
   --do_train \
   --do_eval \
@@ -18,7 +18,7 @@ python run_toxic.py \
   --seed $RAN \
   --logging_steps 1000 \
   --overwrite_output_dir \
-  --data_dir $TOXIC_DIR/$DATA \
+  --data_dir $DATA \
   --max_seq_length 128 \
   --per_gpu_train_batch_size 8 \
   --per_gpu_eval_batch_size 8 \
